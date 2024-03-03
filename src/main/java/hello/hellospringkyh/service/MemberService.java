@@ -9,9 +9,11 @@ import java.util.Optional;
 
 public class MemberService {
     // Ctrl + Shift + t -> Create new test
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
 
-    public MemberService(MemoryMemberRepository memberRepository) {
+    // MemberService 입장에서의 DI(Dependency Injection)
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     /*
