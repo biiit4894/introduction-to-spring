@@ -3,19 +3,25 @@ package hello.hellospringkyh.service;
 import hello.hellospringkyh.domain.Member;
 import hello.hellospringkyh.repository.MemberRepository;
 import hello.hellospringkyh.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     // Ctrl + Shift + t -> Create new test
+    // 기존 코드 : 회원 서비스가 메모리 회원 리포지토리를 직접 생성하게 했다
+    // private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
-    // MemberService 입장에서의 DI(Dependency Injection)
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
+    // MemberService 입장에서의 DI(Dependency Injection)
     /*
     회원 가입
      */
