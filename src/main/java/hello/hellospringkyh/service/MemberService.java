@@ -9,17 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class MemberService {
     // Ctrl + Shift + t -> Create new test
     // 기존 코드 : 회원 서비스가 메모리 회원 리포지토리를 직접 생성하게 했다
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
-    @Autowired
-    public MemberService(MemberRepository memberRepository) {
+    public void setMemberRepository(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+    //생성자 주입
+//    public MemberService(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
 
     // MemberService 입장에서의 DI(Dependency Injection)
     /*
