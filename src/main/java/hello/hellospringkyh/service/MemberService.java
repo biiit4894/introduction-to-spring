@@ -15,9 +15,10 @@ public class MemberService {
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
     private MemberRepository memberRepository;
 
-    public void setMemberRepository(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+
     //생성자 주입
 //    public MemberService(MemberRepository memberRepository) {
 //        this.memberRepository = memberRepository;

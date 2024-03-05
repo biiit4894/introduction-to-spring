@@ -16,11 +16,9 @@ public class MemberController {
 //        this.memberService = memberService;
 //    }
 
-
     //생성자 주입
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
-        memberService.setMemberRepository();
     }
 }
