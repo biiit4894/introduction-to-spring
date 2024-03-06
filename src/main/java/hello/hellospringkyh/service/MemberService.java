@@ -20,11 +20,12 @@ public class MemberService {
     }
 
     //생성자 주입
-//    public MemberService(MemberRepository memberRepository) {
-//        this.memberRepository = memberRepository;
-//    }
+    //public MemberService(MemberRepository memberRepository) {
+    //    this.memberRepository = memberRepository;
+    //}
 
     // MemberService 입장에서의 DI(Dependency Injection)
+
     /*
     회원 가입
      */
