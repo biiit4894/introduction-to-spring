@@ -1,13 +1,19 @@
 package hello.hellospringkyh;
 
+import hello.hellospringkyh.repository.JdbcMemberRepository;
 import hello.hellospringkyh.repository.MemberRepository;
 import hello.hellospringkyh.repository.MemoryMemberRepository;
 import hello.hellospringkyh.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class SpringConfig {
+
+    private DataSource dataSource;
 
     @Bean
     public MemberService memberService() {
@@ -16,6 +22,7 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+//        return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
     }
 }
