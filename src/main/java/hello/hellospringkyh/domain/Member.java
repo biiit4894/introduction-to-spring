@@ -1,5 +1,6 @@
 package hello.hellospringkyh.domain;
 
+
 public class Member {
     private Long id;
     private String name;
