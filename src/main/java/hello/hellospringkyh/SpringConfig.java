@@ -1,9 +1,6 @@
 package hello.hellospringkyh;
 
-import hello.hellospringkyh.repository.JdbcMemberRepository;
-import hello.hellospringkyh.repository.JdbcTemplateMemberRepository;
-import hello.hellospringkyh.repository.MemberRepository;
-import hello.hellospringkyh.repository.MemoryMemberRepository;
+import hello.hellospringkyh.repository.*;
 import hello.hellospringkyh.service.MemberService;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +13,23 @@ import javax.xml.crypto.Data;
 @Configuration
 public class SpringConfig {
 
-    private DataSource dataSource;
+//    private DataSource dataSource;
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(DataSource dataSource, EntityManager em) {
+//        this.dataSource = dataSource;
+//        this.em = em;
+//    }
+
+    // 일단은 entityManager만 inject받기
     private EntityManager em;
 
     @Autowired
-    public SpringConfig(DataSource dataSource, EntityManager em) {
+    public SpringConfig(EntityManager em) {
         this.em = em;
     }
+
     @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository());
@@ -32,6 +39,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }
